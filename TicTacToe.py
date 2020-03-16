@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Mar  3 15:13:30 2020
-
-@author: user
+@author: harshitJi
 """
 import random
-fir=input("Do you want to start ? ||| 1-Yes/0-No")  
+fir=input("Do you want to start ? ||| 1-Yes/0-No ")  
   
 def score(temp):
     sc=0
@@ -60,6 +59,7 @@ def first(li,a):
                         temp[z]='x'
         temp.append(sc)
         temp.append(0)
+        temp.append(sc)
         li.append(temp)
         
     
@@ -80,6 +80,7 @@ def second(li,a):
                         temp[z]='x'
         temp.append(sc)
         temp.append(0)
+        temp.append(sc)
         li.append(temp)
         
 def third(li,a):
@@ -99,6 +100,7 @@ def third(li,a):
                         temp[z]='x'
         temp.append(sc)
         temp.append(0)
+        temp.append(sc)
         li.append(temp)
         
 def fourth(li,a):
@@ -118,6 +120,7 @@ def fourth(li,a):
                         temp[z]='x'
         temp.append(sc)
         temp.append(0)
+        temp.append(sc)
         li.append(temp)
         
 def fifth(li,a):
@@ -137,6 +140,7 @@ def fifth(li,a):
                         temp[z]='x'
         temp.append(sc)
         temp.append(0)
+        temp.append(sc)
         li.append(temp)
         
 def sixth(li,a):
@@ -156,6 +160,7 @@ def sixth(li,a):
                         temp[z]='x'
         temp.append(sc)
         temp.append(0)
+        temp.append(sc)
         li.append(temp)
         
 def seventh(li,a):
@@ -175,6 +180,7 @@ def seventh(li,a):
                         temp[z]='x'
         temp.append(sc)
         temp.append(0)
+        temp.append(sc)
         li.append(temp)
         
 def eighth(li,a):
@@ -194,6 +200,7 @@ def eighth(li,a):
                         temp[z]='x'
         temp.append(sc)
         temp.append(0)
+        temp.append(sc)
         li.append(temp)
         
 def ninth(li,a):
@@ -213,15 +220,16 @@ def ninth(li,a):
                         temp[z]='x'
         temp.append(sc)
         temp.append(0)
+        temp.append(sc)
         li.append(temp)
 
 test=0
 if fir=='0':
-    li=[[0,0,0,0,0,0,0,0,0,'x',-1,0,0]]
-    inp=[0,0,0,0,0,0,0,0,0,'x',-1,0,0]
+    li=[[0,0,0,0,0,0,0,0,0,'x',-1,0,0,0]]
+    inp=[0,0,0,0,0,0,0,0,0,'x',-1,0,0,0]
 else:
-    li=[[0,0,0,0,0,0,0,0,0,'o',-1,0,0]]
-    inp=[0,0,0,0,0,0,0,0,0,'o',-1,0,0]
+    li=[[0,0,0,0,0,0,0,0,0,'o',-1,0,0,0]]
+    inp=[0,0,0,0,0,0,0,0,0,'o',-1,0,0,0]
 a=0
 for i in range(422074):
     first(li,a)
@@ -242,6 +250,8 @@ while i>=0:
     c1=0
     c2=0
     n=i
+    summ1=0
+    summ2=0
     while li[i][10]==x:
         if li[i][11]<mn:
             mn=li[i][11]
@@ -253,15 +263,19 @@ while i>=0:
     while n!=i:
         if li[n][11]==mn:
             c1=c1+1
+            summ1=summ1+li[n][13]
         if li[n][11]==mx:
             c2=c2+1
+            summ2=summ2+li[n][13]
         n=n-1
     if li[x][9]=='o':
         li[x][11]=mn
         li[x][12]=c1
+        li[x][13]=summ2-summ1
     else:
         li[x][11]=mx
         li[x][12]=c2
+        li[x][13]=summ1-summ2
 
 while 1:
     if inp[0]==0 or inp[1]==0 or inp[2]==0 or inp[3]==0 or inp[4]==0 or inp[5]==0 or inp[6]==0 or inp[7]==0 or inp[8]==0:
@@ -282,10 +296,12 @@ while 1:
             for i in wi:
                 if i[11]==mx:
                     q.append(i)
-            mn=10
+            mn=-32000
             for i in q:
-                if i[12]<mn:
-                    mn=i[12]
+                if i[13]>mn:
+                    mn=i[13]
+            for i in q:
+                if i[13]==mn:
                     l.append(i)
             ind=random.randint(0,len(l)-1)
             inp=l[ind]
@@ -322,16 +338,19 @@ while 1:
             for i in range(0, 549945):
                 if li[i][10]==z:
                   wi.append(li[i])
+            print(wi)
             for i in wi:
                 if i[11]>mx:
                     mx=i[11]
             for i in wi:
                 if i[11]==mx:
                     q.append(i)
-            mn=10
+            mn=32000
             for i in q:
-                if i[12]<mn:
-                    mn=i[12]
+                if i[13]<mn:
+                    mn=i[13]
+            for i in q:
+                if i[13]==mn:
                     l.append(i)
             if len(l)!=0:
                 ind=random.randint(0,len(l)-1)
